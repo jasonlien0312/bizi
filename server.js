@@ -1,15 +1,21 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 
-//routes
-// app.get("/", (req, res) => {
-//   res.send("hello world lol.");
-// });
-// app.get("/api/users", (req, res) => {
-//   res.send(["jason", "lenox", "michael"]);
-// });
-app.get("/express_backend", (req, res) => {
-  res.send("YES EXPRESS!");
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get("/express", (req, res) => {
+  res.send({ express: "YES EXPRESS!" });
+});
+
+app.get("/login", (req, res) => {
+  res.sendFile(__dirname + "/login.html");
+});
+
+app.post("/user", (req, res) => {
+  console.log(req.body);
+  res.send(req.body);
 });
 
 //listener
