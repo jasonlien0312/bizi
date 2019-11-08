@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
+const port = 3000;
 
-//routes
-app.get('/',(req, res) =>{
-    res.send("hello world lol.")
-});
-app.get('/api/users',(req,res) => {
-    res.send(['jason','lenox','michael'])
+app.use(bodyParser.urlencoded({ extended: true}));
+
+app.get('/', function(req, res) {
+    res.sendfile('./login.html');
 });
 
-//listener
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`listening on ${port}...`)
-});
+app.post('/send', urlencodedParser, function(req, res){
+    res.send('your name: ', req.body.name);
+})
+
+app.listen(port, () => console.log('listening on port ${port}'));
