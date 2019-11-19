@@ -1,6 +1,13 @@
-<h1>Login</h1>
-<form action="/user" , method="post">
-  First name: <input type="text" name="FirstName" /><br />
-  Last name: <input type="text" name="LastName" /><br />
-  <input type="submit" value="Login" />
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(() => {
+    $("#submit").click(() => {
+      $.ajax();
+    });
+  });
+</script>
+<h1>User Login</h1>
+<form action="/user" , method="get">
+  Name: <input type="text" name="name" /><br />
+  <input id="submit" type="submit" value="Login" />
 </form>
