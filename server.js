@@ -33,19 +33,6 @@ app.get("/user", (req, res) => {
   res.sendFile(__dirname + "/user.html");
 });
 
-// app.get("/:userName", (req, res) => {
-//   user = req.params.userName;
-//   db.all("SELECT * FROM events where eventUser='req.query.name';", (err, events) => {
-//     console.log(events);
-//     res.send(events);
-//   });
-// });
-
-//TODO: create pages for editing events
-// app.post('/:userName/edit/:eventName',(req,res)=>{
-
-// });
-
 //listener
 const port = 3001;
 app.listen(port, () => {
