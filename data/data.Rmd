@@ -1,7 +1,18 @@
+---
+title: "bizi"
+author: "lenoxcyy13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+資料閱讀、整理
+```{r}
 library(dplyr)
 library(stringr)
 
-fps <- list.files('data/data', full.names = T)
+fps <- list.files('/Users/lenoxcyy13/Desktop/bizi/data/data', full.names = T)
 
 x <- vector('character', length(fps))
 
@@ -13,12 +24,16 @@ y <- str_split(x, ',', simplify = F)
 data <- matrix(Reduce(c,y), ncol = 5, byrow = TRUE)
 colnames(data) <- c('eventUser','eventName','eventDescription','eventDate','eventTime')
 data <- as_tibble(data)
+data
+```
 
+待解決
+```{r}
 mt <- data %>%
   select(eventDate, eventTime) %>%
   group_by(eventDate) %>%
   arrange(eventTime)
-
+mt
 #建立一個list, meeting$(eventDate)$eventTime依序
 meet <- list("03/12/2019" = "08:00", "3/13/2019" = c("08:00", "09:00"), "06/12/2019" = "10:00")
 #build a vector name timeline <- c(24hours)
@@ -27,5 +42,5 @@ timeline <- c('00:00', '01:00', '02:00', '03:00', '04:00', '05:00', '06:00', '07
               '16:00', '17:00', '18:00', '19:00', '20:00', '21:00', '22:00', '23:00')
 #compare two vector and output the time (ignore the overlapping ones)
 timeline[!timeline%in%meet$`03/12/2019`]
-
+```
 
