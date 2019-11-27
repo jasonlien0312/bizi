@@ -1,0 +1,1 @@
+Lenox,CSCE 101,data structure and algorithm,06/12/2019,10:00,Lenox,Agro,Experiment design,03/12/2019,08:00,Lenox,Agro,Statistic,03/13/2019,08:00
