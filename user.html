@@ -1,5 +1,8 @@
-<h1 id="title">What's up</h1>
-<h2>Here are your events:</h2>
+<h1 id="title"></h1>
+<h3>Here are your events:</h3>
+<p id="events"></p>
+<h3>Add an event</h3>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
   function GetURLParameter(sParam) {
@@ -13,19 +16,28 @@
     }
   }
   var name = GetURLParameter("name");
-  console.log("Params' name is " + name);
   $(document).ready(() => {
     $.ajax({
       url: "/events?name=" + name,
       type: "GET",
       dataType: "json",
       success: data => {
-        console.log("You get: " + JSON.stringify(data));
-        $("#events").html("All events:" + JSON.stringify(data));
         $("#title").html("What's up " + name + "!");
+        badge = document.createElement("div");
+        badge.innerHTML = "<ul>";
+        console.log(data.length);
+        for (i = 0; i < data.length; i++) {
+          badge.innerHTML +=
+            "<li>" +
+            data[i].eventName +
+            ": " +
+            data[i].eventDescription +
+            "</li>";
+        }
+        badge.innerHTML += "</ul>";
+        console.log(badge.innerHTML);
+        document.getElementById("events").appendChild(badge);
       }
     });
   });
 </script>
-
-<div id="events"></div>

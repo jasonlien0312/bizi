@@ -13,13 +13,14 @@ app.get("/express", (req, res) => {
 
 app.get("/events", (req, res) => {
   user = req.query.name;
-  console.log(user);
+  // console.log(user);
   db.all(
     "SELECT eventName, eventDescription  FROM events WHERE eventUser='" +
       user +
       "';",
     (err, events) => {
-      res.json(events);
+      res.send(events);
+      // console.log(events);
     }
   );
 });
