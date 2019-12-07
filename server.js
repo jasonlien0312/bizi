@@ -1,11 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const path = require("path");
 const app = express();
 const sqlite3 = require("sqlite3");
 const db = new sqlite3.Database("tables.db");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "static")));
 
 app.get("/express", (req, res) => {
   res.send({ express: "YES EXPRESS!" });
