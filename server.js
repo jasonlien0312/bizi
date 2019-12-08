@@ -12,7 +12,16 @@ app.use(express.static(path.join(__dirname, "static")));
 app.get("/express", (req, res) => {
   res.send({ express: "YES EXPRESS!" });
 });
+app.get("/login", (req, res) => {
+  res.sendFile(__dirname + "/login.html");
+});
 
+app.get("/user", (req, res) => {
+  user = req.query.name;
+  res.sendFile(__dirname + "/user.html");
+});
+
+//Handling events
 app.get("/events", (req, res) => {
   user = req.query.name;
   // console.log(user);
@@ -27,13 +36,36 @@ app.get("/events", (req, res) => {
   );
 });
 
-app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/login.html");
-});
-
-app.get("/user", (req, res) => {
-  user = req.query.name;
-  res.sendFile(__dirname + "/user.html");
+app.post("/events", (req, res) => {
+  // event = {
+  //   user: req.body.eventUser,
+  //   name: req.body.eventName,
+  //   description: req.body.eventDescription,
+  //   date: req.body.eventDate,
+  //   starts: req.body.eventStarts,
+  //   ends: req.body.eventEnds
+  // };
+  // query =
+  //   "INSER INTO events (eventUser, eventName, eventDescription, eventDate, eventStarts, eventEnds) VALUS (?,?,?,?,?,?)";
+  // params = [
+  //   event.user,
+  //   event.name,
+  //   event.description,
+  //   event.date,
+  //   event.starts,
+  //   event.ends
+  // ];
+  // db.run(quert, params, (err, result) => {
+  //   if (err) {
+  //     res.status(400).json({ error: err.message });
+  //     return;
+  //   }
+  //   res.json({
+  //     message: "success",
+  //     data: event,
+  //     id: this.lastID
+  //   });
+  // });
 });
 
 //listener

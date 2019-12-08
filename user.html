@@ -1,6 +1,25 @@
-<h1 id="title"></h1>
-<h3>Here are your events:</h3>
-<p id="events"></p>
-<h3>Add an event</h3>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript" src="getEvent.js"></script>
+
+<h1 id="title"></h1>
+<div class="topnav">
+  <a class="active" href="/user">My Calander</a>
+  <a href="/meetings">My Meetings</a>
+</div>
+<h3>Here are your events:</h3>
+<p id="events"></p>
+
+<h3>Add an event</h3>
+<form action="/events" method="post">
+  Event Name:<input type="text" name="eventName" /><br />
+  Event Description: <input type="text" name="eventDescription" /> <br />
+  Event Date(mm/dd/yyyy):<input
+    type="text"
+    name="eventDate"
+    value="12/06/2019"
+  />
+  <br />
+  Event Start Time:<input type="text" name="eventStarts" value="11:00a" /><br />
+  Event End Time:<input type="text" name="eventEnds" value="05:00p" /><br />
+  <input type="submit" value="submit" /><br />
+</form>
